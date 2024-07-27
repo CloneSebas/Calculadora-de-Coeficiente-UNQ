@@ -4,72 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Especial</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 50px;
-        }
-        .calculator {
-            max-width: 300px;
-            margin: auto;
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-        }
-        input[type="number"] {
-            width: 100%;
-            padding: 10px;
-            margin: 5px 0;
-            box-sizing: border-box;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        .result {
-            margin-top: 20px;
-            padding: 10px;
-            background-color: #f1f1f1;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="calculator">
-        <h2>Calculadora de Coeficiente según SIU GUARANÍ</h2>
-        <label for="tco">Créditos Obtenidos</label>
-        <input type="number" id="tco" required>
-        <label for="tcc">Créditos de la Carrera</label>
-        <input type="number" id="tcc" required>
-        <label for="promedio">Promedio</label>
-        <input type="number" id="promedio" required>
-        <button onclick="calcular()">Calcular</button>
-        <div id="resultado" class="result"></div>
+    <div class="container">
+        <h1>Calculadora de Coeficiente</h1>
+        <form id="calculator-form">
+            <label for="tco">Total de Créditos Obtenidos</label>
+            <input type="number" id="tco" name="tco" required>
+
+            <label for="tcc">Total de Créditos de la Carrera</label>
+            <input type="number" id="tcc" name="tcc" required>
+
+            <label for="promedio">Promedio</label>
+            <input type="number" id="promedio" name="promedio" required>
+
+            <button type="button" onclick="calculate()">Calcular</button>
+        </form>
+
+        <div id="result"></div>
     </div>
 
-    <script>
-        function calcular() {
-            const tco = parseFloat(document.getElementById('tco').value);
-            const tcc = parseFloat(document.getElementById('tcc').value);
-            const promedio = parseFloat(document.getElementById('promedio').value);
-
-            if (isNaN(tco) || isNaN(tcc) || isNaN(promedio)) {
-                document.getElementById('resultado').innerText = "Por favor, ingrese todos los valores.";
-                return;
-            }
-
-            const resultado = (tco / tcc) * 90 + promedio;
-            document.getElementById('resultado').innerText = "Resultado: " + resultado.toFixed(2);
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
